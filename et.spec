@@ -1,13 +1,14 @@
+# TODO
+# - create dedicated server subpackage
 #
 # Conditional build:
-#
-%bcond_with	data	# build data subpackage (huge and resource consuming)
+%bcond_without	data	# skip build of data subpackage (huge and resource consuming)
 #
 Summary:	Enemy Territory
 Summary(pl):	Enemy Territory - Terytorium wroga
 Name:		et
 Version:	2.56
-Release:	0.11
+Release:	0.13
 Epoch:		0
 License:	RTCW-ETEULA
 Group:		Applications/Games
@@ -97,11 +98,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_gamelibdir}/pb/*.so
 %{_gamelibdir}/pb/*.db
 
+%dir %{_gamedatadir}
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.xpm
 
 %if %{with data}
 %files data
 %defattr(644,root,root,755)
-%{_gamedatadir}
+%{_gamedatadir}/*
 %endif
