@@ -18,6 +18,7 @@ NoSource:	0
 URL:		http://www.idsoftware.com/
 # loose dependancy is intentional
 Requires:	%{name}-data = %{version}
+ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -49,8 +50,6 @@ Pakiet ten zawiera pliki z danymi dla gry Enemy Territory.
 %prep
 %setup -qcT
 sh %{SOURCE0} --tar xf
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -103,5 +102,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with data}
 %files data
+%defattr(644,root,root,755)
 %{_gamedatadir}
 %endif
