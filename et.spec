@@ -15,7 +15,6 @@ NoSource:	0
 URL:		http://www.idsoftware.com/
 # loose dependancy is intentional
 Requires:	%{name}-data = %{version}
-BuildArch:	%{_host_cpu}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -31,7 +30,6 @@ multi-player game based on Return to Castle Wolfenstein.
 %package data
 Summary:	Enemy Territory data files.
 Group:		Applications/Games
-BuildArch: noarch
 
 %description data
 This package contains the data files for Enemy Territory.
