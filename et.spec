@@ -54,7 +54,7 @@ cat << EOF > $RPM_BUILD_ROOT%{_bindir}/%{name}
 # the binaries must run with correct working directory
 cd %{_gamelibdir}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
-exec ./%{name} "$@"
+exec ./%{name} "\$@"
 EOF
 
 install ET.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.xpm
