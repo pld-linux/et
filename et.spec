@@ -1,7 +1,10 @@
+#
 # Conditional build:
+#
 %bcond_with	data	# build data subpackage (huge and resource consuming)
 #
 Summary:	Enemy Territory
+Summary(pl):	Enemy Territory - Terytorium wroga
 Name:		et
 Version:	2.56
 Release:	0.11
@@ -26,14 +29,22 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Return to Castle Wolfenstein: Enemy Territory - standalone
 multi-player game based on Return to Castle Wolfenstein.
 
-%if %{with data}
+%description -l pl
+Powrót do zamku Wolfenstein: Terytorium wroga (Return to Castle
+Wolfenstein: Enemy Territory) jest to samodzielna gra dla wielu graczy
+oparta na Powrocie do zamku Wolfenstein (Return to Castle
+Wolfenstein).
+
 %package data
-Summary:	Enemy Territory data files.
+Summary:	Enemy Territory data files
+Summary(pl):	Pliki z danymi dla Enemy Territory
 Group:		Applications/Games
 
 %description data
 This package contains the data files for Enemy Territory.
-%endif
+
+%description data -l pl
+Pakiet ten zawiera pliki z danymi dla gry Enemy Territory.
 
 %prep
 %setup -qcT
@@ -44,7 +55,7 @@ sh %{SOURCE0} --tar xf
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_pixmapsdir},%{_desktopdir}} \
-    $RPM_BUILD_ROOT{%{_gamelibdir},%{_gamedatadir}}
+	$RPM_BUILD_ROOT{%{_gamelibdir},%{_gamedatadir}}
 
 install bin/Linux/x86/et.x86 $RPM_BUILD_ROOT%{_gamelibdir}/%{name}
 
