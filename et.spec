@@ -32,10 +32,8 @@ Return to Castle Wolfenstein: Enemy Territory - standalone
 multi-player game based on Return to Castle Wolfenstein.
 
 %description -l pl
-Powrót do zamku Wolfenstein: Terytorium wroga (Return to Castle
-Wolfenstein: Enemy Territory) jest to samodzielna gra dla wielu graczy
-oparta na Powrocie do zamku Wolfenstein (Return to Castle
-Wolfenstein).
+Return to Castle Wolfenstein: Enemy Territory jest to samodzielna gra
+dla wielu graczy oparta na Return to Castle Wolfenstein.
 
 %package data
 Summary:	Enemy Territory data files
