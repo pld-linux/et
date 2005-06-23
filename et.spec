@@ -7,13 +7,13 @@
 Summary:	Enemy Territory
 Summary(pl):	Enemy Territory - Terytorium wroga
 Name:		et
-Version:	2.56
-Release:	0.13
+Version:	2.60
+Release:	0.1
 Epoch:		0
 License:	RTCW-ETEULA
 Group:		Applications/Games
-Source0:	http://3dgamers.planetmirror.com/pub/3dgamers/games/wolfensteinet/et-linux-%{version}-2.x86.run
-# NoSource0-md5:	4dddf1612b9ed5b3fe9d3348ec78c28f
+Source0:	http://3dgamers.planetmirror.com/pub/3dgamers/games/wolfensteinet/et-linux-%{version}.x86.run
+# NoSource0-md5:	2d2373f29f02e18d365d7f1860eee435
 Source1:	%{name}.desktop
 NoSource:	0
 URL:		http://www.idsoftware.com/
