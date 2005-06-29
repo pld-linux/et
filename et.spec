@@ -83,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES v1.02_Readme.htm Docs pb/PB_EULA.txt
+%doc CHANGES README Docs pb/PB_EULA.txt
 %attr(755,root,root) %{_bindir}/*
 
 %dir %{_gamelibdir}
