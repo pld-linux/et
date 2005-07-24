@@ -57,7 +57,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_pixmapsdir},%{_desktopdir}} \
 
 install bin/Linux/x86/et.x86 $RPM_BUILD_ROOT%{_gamelibdir}/%{name}
 
-cat << EOF > $RPM_BUILD_ROOT%{_bindir}/%{name}
+cat << 'EOF' > $RPM_BUILD_ROOT%{_bindir}/%{name}
 #!/bin/sh
 # Needed to make symlinks/shortcuts work.
 # the binaries must run with correct working directory
