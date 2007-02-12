@@ -5,7 +5,7 @@
 %bcond_without	data	# skip build of data subpackage (huge and resource consuming)
 #
 Summary:	Enemy Territory
-Summary(pl):	Enemy Territory - Terytorium wroga
+Summary(pl.UTF-8):   Enemy Territory - Terytorium wroga
 Name:		et
 Version:	2.60
 Release:	0.1
@@ -31,19 +31,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Return to Castle Wolfenstein: Enemy Territory - standalone
 multi-player game based on Return to Castle Wolfenstein.
 
-%description -l pl
+%description -l pl.UTF-8
 Return to Castle Wolfenstein: Enemy Territory jest to samodzielna gra
 dla wielu graczy oparta na Return to Castle Wolfenstein.
 
 %package data
 Summary:	Enemy Territory data files
-Summary(pl):	Pliki z danymi dla Enemy Territory
+Summary(pl.UTF-8):   Pliki z danymi dla Enemy Territory
 Group:		Applications/Games
 
 %description data
 This package contains the data files for Enemy Territory.
 
-%description data -l pl
+%description data -l pl.UTF-8
 Pakiet ten zawiera pliki z danymi dla gry Enemy Territory.
 
 %prep
