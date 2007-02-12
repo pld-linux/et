@@ -5,7 +5,7 @@
 %bcond_without	data	# skip build of data subpackage (huge and resource consuming)
 #
 Summary:	Enemy Territory
-Summary(pl.UTF-8):   Enemy Territory - Terytorium wroga
+Summary(pl.UTF-8):	Enemy Territory - Terytorium wroga
 Name:		et
 Version:	2.60
 Release:	0.1
@@ -37,7 +37,7 @@ dla wielu graczy oparta na Return to Castle Wolfenstein.
 
 %package data
 Summary:	Enemy Territory data files
-Summary(pl.UTF-8):   Pliki z danymi dla Enemy Territory
+Summary(pl.UTF-8):	Pliki z danymi dla Enemy Territory
 Group:		Applications/Games
 
 %description data
