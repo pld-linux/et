@@ -8,7 +8,7 @@ Summary:	Enemy Territory
 Summary(pl.UTF-8):	Enemy Territory - Terytorium wroga
 Name:		et
 Version:	2.60
-Release:	0.1
+Release:	0.3
 Epoch:		0
 License:	RTCW-ETEULA
 Group:		Applications/Games
@@ -24,7 +24,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
 %define		no_install_post_chrpath 1
-%define		_gamelibdir	%{_libdir}/games/et
+%define		_gamelibdir		%{_libdir}/games/et
 %define		_gamedatadir	%{_datadir}/games/et
 
 %description
@@ -50,10 +50,12 @@ Pakiet ten zawiera pliki z danymi dla gry Enemy Territory.
 %setup -qcT
 sh %{SOURCE0} --tar xf
 
+mv pb/PB_EULA.txt .
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_pixmapsdir},%{_desktopdir}} \
-	$RPM_BUILD_ROOT{%{_gamelibdir},%{_gamedatadir}}
+	$RPM_BUILD_ROOT{%{_gamelibdir}/{pb,etmain},%{_gamedatadir}/etmain}
 
 install bin/Linux/x86/et.x86 $RPM_BUILD_ROOT%{_gamelibdir}/%{name}
 
@@ -63,32 +65,39 @@ cat << 'EOF' > $RPM_BUILD_ROOT%{_bindir}/%{name}
 # the binaries must run with correct working directory
 cd %{_gamelibdir}
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
-exec ./%{name} "\$@"
+exec ./%{name} ${1:+"$@"}
 EOF
 
 install ET.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.xpm
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
-ln -s ../../../share/games/et/etmain $RPM_BUILD_ROOT%{_gamelibdir}
-
-cp -a pb $RPM_BUILD_ROOT%{_gamelibdir}
-# in DOCS
-rm -f $RPM_BUILD_ROOT%{_gamelibdir}/pb/PB_EULA.txt
+install etmain/*.so $RPM_BUILD_ROOT%{_gamelibdir}/etmain
 
 %if %{with data}
-cp -a etmain $RPM_BUILD_ROOT%{_gamedatadir}
+cp -a etmain/{video,*.{pk3,cfg,dat,txt}} $RPM_BUILD_ROOT%{_gamedatadir}/etmain
+cd $RPM_BUILD_ROOT%{_gamedatadir}/etmain
+for a in video *.{pk3,cfg,dat,txt}; do
+	ln -s ../../../../share/games/et/etmain/$a $RPM_BUILD_ROOT%{_gamelibdir}/etmain
+done
+cd -
 %endif
+
+install pb/*.so $RPM_BUILD_ROOT%{_gamelibdir}/pb
+install pb/*.x86 $RPM_BUILD_ROOT%{_gamelibdir}/pb
+cp -a pb/*.db $RPM_BUILD_ROOT%{_gamelibdir}/pb
+cp -a pb/htm $RPM_BUILD_ROOT%{_gamelibdir}/pb
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES README Docs pb/PB_EULA.txt
+%doc CHANGES README Docs PB_EULA.txt
 %attr(755,root,root) %{_bindir}/*
 
 %dir %{_gamelibdir}
 %attr(755,root,root) %{_gamelibdir}/et
-%{_gamelibdir}/etmain
+%dir %{_gamelibdir}/etmain
+%attr(755,root,root) %{_gamelibdir}/etmain/*.so
 
 %dir %{_gamelibdir}/pb
 %{_gamelibdir}/pb/htm
