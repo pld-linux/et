@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Version=0.9.2
 Name=Enemy Territory
 Type=Application
@@ -7,6 +6,6 @@ Terminal=false
 Comment=Return to Castle Wolfenstein: Enemy Territory - standalone multi-player game based on Return to Castle Wolfenstein
 Comment[pl]=Return to Castle Wolfenstein: Enemy Territory - samodzielna gra dla wielu graczy oparta na Return to Castle Wolfenstein
 Exec=et
-Icon=et.xpm
+Icon=et
 Categories=Game;FirstPersonGame;
 # vi: encoding=utf-8
