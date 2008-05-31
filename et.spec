@@ -13,7 +13,7 @@ Epoch:		0
 License:	RTCW-ETEULA
 Group:		Applications/Games
 Source0:	http://ftp.games.skynet.be/pub/wolfenstein/et-linux-%{version}.x86.run
-# NoSource0-md5:	
+# NoSource0-md5:	2d2373f29f02e18d365d7f1860eee435
 Source1:	%{name}.desktop
 NoSource:	0
 URL:		http://www.idsoftware.com/
@@ -22,7 +22,7 @@ Requires:	%{name}-data = %{version}
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_gamelibdir		%{_libdir}/games/et
+%define		_gamelibdir	%{_libdir}/games/et
 %define		_gamedatadir	%{_datadir}/games/et
 
 %description
