@@ -12,8 +12,8 @@ Release:	0.3
 Epoch:		0
 License:	RTCW-ETEULA
 Group:		Applications/Games
-Source0:	http://3dgamers.planetmirror.com/pub/3dgamers/games/wolfensteinet/et-linux-%{version}.x86.run
-# NoSource0-md5:	2d2373f29f02e18d365d7f1860eee435
+Source0:	http://ftp.games.skynet.be/pub/wolfenstein/et-linux-%{version}.x86.run
+# NoSource0-md5:	
 Source1:	%{name}.desktop
 NoSource:	0
 URL:		http://www.idsoftware.com/
