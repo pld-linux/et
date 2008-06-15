@@ -24,6 +24,7 @@ Source3:	%{name}.desktop
 NoSource:	0
 URL:		http://www.idsoftware.com/
 # loose dependancy is intentional
+BuildRequires:	unzip
 Requires:	%{name}-data = %{version}
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
