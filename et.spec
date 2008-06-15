@@ -1,5 +1,7 @@
 # TODO
 # - create dedicated server subpackage
+# - add etpro subpackage: http://ftp.games.skynet.be/pub/wolfenstein/
+# - separate 2.60 and 2.60b - some servers needs different version
 #
 # Conditional build:
 %bcond_without	data	# skip build of data subpackage (huge and resource consuming)
@@ -8,13 +10,17 @@ Summary:	Enemy Territory
 Summary(pl.UTF-8):	Enemy Territory - Terytorium wroga
 Name:		et
 Version:	2.60
-Release:	0.3
+Release:	0.4
 Epoch:		0
 License:	RTCW-ETEULA
 Group:		Applications/Games
-Source0:	http://ftp.games.skynet.be/pub/wolfenstein/et-linux-%{version}.x86.run
+Source0:	ftp://ftp.red.telefonica-wholesale.net/GAMES/ET/linux/%{name}-linux-%{version}.x86.run
 # NoSource0-md5:	2d2373f29f02e18d365d7f1860eee435
-Source1:	%{name}.desktop
+Source1:	ftp://ftp.red.telefonica-wholesale.net/GAMES/ET/linux/%{name}-linux-%{version}-update.x86.run
+# NoSource1-md5:	94a7036471b90955a88339d677e467c2
+Source2:	ftp://ftp.red.telefonica-wholesale.net/GAMES/ET/linux/%{name}-%{version}b.zip
+# NoSource2-md5:	fb83b8732fc7373c277180b663debf57
+Source3:	%{name}.desktop
 NoSource:	0
 URL:		http://www.idsoftware.com/
 # loose dependancy is intentional
@@ -47,7 +53,9 @@ Pakiet ten zawiera pliki z danymi dla gry Enemy Territory.
 %prep
 %setup -qcT
 sh %{SOURCE0} --tar xf
-
+sh %{SOURCE1} --tar xf
+unzip -j %{SOURCE2} "Enemy Territory 2.60b/linux/et*"
+mv et*.x86 bin/Linux/x86
 mv pb/PB_EULA.txt .
 
 %install
@@ -67,7 +75,7 @@ exec ./%{name} ${1:+"$@"}
 EOF
 
 install ET.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.xpm
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+install %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
 install etmain/*.so $RPM_BUILD_ROOT%{_gamelibdir}/etmain
 
 %if %{with data}
@@ -111,4 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 %files data
 %defattr(644,root,root,755)
 %{_gamedatadir}/*
+%{_gamelibdir}/etmain/*.cfg
+%{_gamelibdir}/etmain/*.pk3
+%{_gamelibdir}/etmain/description.txt
+%{_gamelibdir}/etmain/hunkusage.dat
+#%{_gamelibdir}/et/etmain/video
 %endif
