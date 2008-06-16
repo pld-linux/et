@@ -1,6 +1,5 @@
 # TODO
 # - create dedicated server subpackage
-# - add etpro subpackage: http://ftp.games.skynet.be/pub/wolfenstein/
 # - separate 2.60 and 2.60b - some servers needs different version
 #
 # Conditional build:
